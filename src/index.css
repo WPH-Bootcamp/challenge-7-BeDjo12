@@ -1,1 +1,109 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: "Quicksand", sans-serif;
+    cursor: default;
+  }
+}
+
+@layer components {
+  .slider-container {
+    position: relative;
+    width: 100%;
+  }
+}
+
+@layer utilities {
+  .slick-dots {
+    position: absolute;
+    bottom: -32px;
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    z-index: 30;
+  }
+
+  .slick-dots li {
+    margin: 0 4px;
+  }
+
+  .slick-dots li button {
+    all: unset;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background-color: #4b5563;
+    opacity: 0.5;
+    cursor: pointer;
+    display: block;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+
+  .slick-dots li button::before {
+    content: none !important;
+  }
+
+  .slick-dots li.slick-active button {
+    background-color: #ff623e;
+    opacity: 1;
+  }
+
+  .slick-track {
+    display: flex !important;
+    align-items: center;
+    transition: transform 0.6s ease;
+  }
+
+  .slick-slide {
+    display: block;
+    padding: 0 10px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .slick-list {
+    overflow: visible !important;
+  }
+
+  .testimonial-card {
+    position: relative;
+    border-radius: 16px;
+  }
+
+  .testimonial-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(116.18deg, #ff6c37 -22.52%, #747880 33.35%);
+
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .slick-center .testimonial-card::before {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .slider-container::before,
+    .slider-container::after {
+      display: none;
+    }
+
+    .testimonial-card::before {
+      display: none;
+    }
+  }
+}
